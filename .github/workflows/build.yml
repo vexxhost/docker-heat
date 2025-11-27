@@ -16,12 +16,12 @@ jobs:
       id-token: write
       packages: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@2024.1
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/heat
           ref: e5407ba78df24f0fbe31d14b27433ca095dc70de
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@2024.1
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
           image-name: heat
           build-contexts: heat=openstack/heat
