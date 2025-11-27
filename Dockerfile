@@ -5,8 +5,7 @@
 FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:bff09007027c2b6b908e2e970fe5cf06a4c025848e69bad73aa4970aff4978e2 AS build
 # renovate: name=openstack/heat repo=https://github.com/openstack/heat.git branch=master
 ARG HEAT_GIT_REF=7ffb5dd3c2d76299479d5b55041a021458e5f056
-ADD --keep-git-dir=true https://github.com/openstack/heat.git#${HEAT_GIT_REF} /src/heat
-RUN git -C /src/heat fetch --unshallow
+COPY --from=heat . /src/heat
 ARG UV_CACHE_ID=uv-default
 RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
 uv pip install \
