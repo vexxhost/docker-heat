@@ -16,13 +16,14 @@ jobs:
       id-token: write
       packages: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@stable/zed
         with:
           repository: openstack/heat
-          ref: 7ffb5dd3c2d76299479d5b55041a021458e5f056
+          ref: 665ccfc2626f88b422d1c0db07d63556f208a908
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@stable/zed
         with:
           image-name: heat
+          base-image-tag: zed
           build-contexts: heat=openstack/heat
           push: ${{ github.event_name != 'pull_request' }}
