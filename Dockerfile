@@ -3,9 +3,8 @@
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:bff09007027c2b6b908e2e970fe5cf06a4c025848e69bad73aa4970aff4978e2 AS build
-# renovate: name=openstack/heat repo=https://github.com/openstack/heat.git branch=master
-ARG HEAT_GIT_REF=7ffb5dd3c2d76299479d5b55041a021458e5f056
-COPY --from=heat . /src/heat
+COPY --from=heat --link . /src/heat
+RUN git -C /src/heat fetch --unshallow
 ARG UV_CACHE_ID=uv-default
 RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
 uv pip install \
