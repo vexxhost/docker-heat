@@ -19,7 +19,7 @@ jobs:
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/heat
-          ref: cab4293ee3b4aa99b4dc9d3fab2a34dc4957d9eb
+          ref: cab4293ee3b4aa99b4dc9d3fab2a34dc4957d9eb # unmaintained/2023.1
 
       - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
