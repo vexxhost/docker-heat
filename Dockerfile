@@ -3,10 +3,7 @@
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:bff09007027c2b6b908e2e970fe5cf06a4c025848e69bad73aa4970aff4978e2 AS build
-COPY --from=heat --link . /src/heat
-RUN git -C /src/heat fetch --unshallow
-ARG UV_CACHE_ID=uv-default
-RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
+RUN --mount=type=bind,from=heat,source=/,target=/src/heat,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/heat
