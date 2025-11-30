@@ -2,7 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:7036dc98d13cf6c7e5313e658875100f660af765f16ccf782d293d0f493c9cb7 AS build
+COPY patches/openstack/heat /patches/heat
 RUN --mount=type=bind,from=heat,source=/,target=/src/heat,readwrite <<EOF bash -xe
+git -C /src/heat apply --verbose /patches/heat/*
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/heat
