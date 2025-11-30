@@ -3,6 +3,8 @@
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:dbd2a52516e3a70fc8872c4ab4b640f1d7e8f9a330b4a70aeb723a6004f6b398 AS build
+COPY patches/openstack/heat /patches/heat
+RUN git -C /src/heat apply --verbose /patches/openstack/heat/*
 RUN --mount=type=bind,from=heat,source=/,target=/src/heat,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
