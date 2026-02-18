@@ -2,14 +2,14 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:zed@sha256:071ea0ed7e8237119d406c4f05875a53e4a9ef4f31a6e49a1f18a42a472e40dc AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:zed@sha256:b465b5f7b3590a7c83c92d422781114e3320469b1989b0dddc8b2b3d29b3fb9a AS build
 RUN --mount=type=bind,from=heat,source=/,target=/src/heat,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/heat
 EOF
 
-FROM ghcr.io/vexxhost/python-base:zed@sha256:0090545d296b9e800270722e22b4e8c7d320e5b5c46c30ebaa698b76583576dc
+FROM ghcr.io/vexxhost/python-base:zed@sha256:713846a8dc5c80d8bddaa67661480fb6c0de7570534db78989be6f800514e212
 RUN \
     groupadd -g 42424 heat && \
     useradd -u 42424 -g 42424 -M -d /var/lib/heat -s /usr/sbin/nologin -c "Heat User" heat && \
