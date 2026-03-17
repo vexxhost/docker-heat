@@ -9,7 +9,7 @@ uv pip install \
         /src/heat
 EOF
 
-FROM ghcr.io/vexxhost/python-base:main@sha256:a02b5145388e914aec38fc6f0e27afcefed340723e1d61513e82035ae0445cac
+FROM ghcr.io/vexxhost/python-base:main@sha256:33b48a8949882f2263cb9ee529fb961047a43d9dcdcac4cc478be7318262bb43
 RUN \
     groupadd -g 42424 heat && \
     useradd -u 42424 -g 42424 -M -d /var/lib/heat -s /usr/sbin/nologin -c "Heat User" heat && \
