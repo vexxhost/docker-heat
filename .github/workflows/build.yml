@@ -17,12 +17,12 @@ jobs:
       packages: write
       pull-requests: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@01f39b179e76b7da3831bb70bef15e817df49590 # main
         with:
           repository: openstack/heat
           ref: 22da21d1d6912e75a0220bcb425e3a3f2c6749d7 # stable/2025.2
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@01f39b179e76b7da3831bb70bef15e817df49590 # main
         with:
           image-name: heat
           build-contexts: heat=openstack/heat
