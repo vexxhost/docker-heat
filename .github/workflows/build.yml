@@ -25,12 +25,12 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@e012e9b7df8e22166070c4389caf52285807598a # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@286455d3dcce221b89a5b9cfb836ef2ee4f7df69 # main
         with:
           repository: openstack/heat
           ref: 73c2aba8ffa5a45531955440887c0b3d4c217c0c # master
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@e012e9b7df8e22166070c4389caf52285807598a # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@286455d3dcce221b89a5b9cfb836ef2ee4f7df69 # main
         with:
           image-name: heat
           build-contexts: heat=openstack/heat
