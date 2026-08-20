@@ -28,7 +28,7 @@ jobs:
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@70f8dfc6d54fdcfc58940cd93cecced306374ed7 # main
         with:
           repository: openstack/heat
-          ref: c4a566c8c4ebdf680ee7d4eca1835720fcb1de4c # master
+          ref: f721dffbef1a5639e12b7b228034b3b70547e2b1 # master
 
       - uses: vexxhost/docker-atmosphere/.github/actions/build-image@70f8dfc6d54fdcfc58940cd93cecced306374ed7 # main
         with:
